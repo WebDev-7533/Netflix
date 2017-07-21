@@ -48,21 +48,23 @@ class App extends Component {
 
 	addToList(record){
 		var list = this.state.myList;
+		var recList = this.state.recommendationsList;
 		list.push(record);
+		recList.splice(recList.indexOf(record),1);
 		this.setState({
-			myList:list
+			myList:list,
+			recommendationsList:recList
 		});
 	}
 
 	removeFromList(record){
 		var list = this.state.myList;
-		for(var i=0;i<list.length;i++) {
-			if(list[i].id == record.id){
-				list.splice(i,1);
-			}
-		}
+		var recList = this.state.recommendationsList;
+		recList.push(record);
+		list.splice(list.indexOf(record),1);
 		this.setState({
-			myList:list
+			myList:list,
+			recommendationsList:recList
 		});
 	}
 
